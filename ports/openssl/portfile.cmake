@@ -19,6 +19,7 @@ vcpkg_from_github(
         windows/install-layout.patch
         windows/install-pdbs.patch
         unix/android-cc.patch
+        unix/android-cert.patch
         unix/move-openssldir.patch
         unix/no-empty-dirs.patch
         unix/no-static-libs-for-shared.patch
