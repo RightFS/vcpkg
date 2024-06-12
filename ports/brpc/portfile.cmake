@@ -2,12 +2,11 @@ vcpkg_from_github(
     OUT_SOURCE_PATH SOURCE_PATH
     REPO apache/brpc
     REF "${VERSION}"
-    SHA512 1b4815ea5f09af43a36bbd0a5fe1d59862abd0e23b870b8db59888b73bc15db448d0c6cdf817eb4c9daa582cde825477273251dbd63ce1cd1fdf6b3a93746e97
+    SHA512 a908c3cf63224d6fb98f1855aca75c3adf528c40da5180c6e298cc52ee9ccbef08809a81078333bdd6ac1a4af54448edac8dd4e0333e72e9dec2790454355e7a
     HEAD_REF master
     PATCHES
         fix-build.patch
-        protobuf.patch
-        fix-warnings.patch
+        fix-glog.patch
 )
 
 vcpkg_cmake_configure(
@@ -28,6 +27,6 @@ file(REMOVE_RECURSE "${CURRENT_PACKAGES_DIR}/include/butil/third_party/superfast
 
 vcpkg_copy_pdbs()
 
-file(INSTALL "${SOURCE_PATH}/LICENSE" DESTINATION "${CURRENT_PACKAGES_DIR}/share/${PORT}" RENAME copyright)
+vcpkg_install_copyright(FILE_LIST "${SOURCE_PATH}/LICENSE")
 
 vcpkg_fixup_pkgconfig()
